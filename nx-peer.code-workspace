@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+    "workbench.colorCustomizations": {
+      "sideBar.background": "#111A20",
+      "editorRuler.foreground": "#111A20",
+      "editor.background": "#001f23",
+      "titleBar.border": "#111A20",
+      "titleBar.activeBackground": "#101e25",
+      "titleBar.activeForeground": "#22E9FF",
+      "statusBar.background": "#101e25",
+      "statusBar.foreground": "#22E9FF",
+      "activityBar.foreground": "#22E9FF",
+      "activityBarBadge.background": "#00000070",
+      "activityBarBadge.foreground": "#F8FF2E",
+      "activityBar.background": "#101e25",
+      "tab.activeBackground": "#002a2e",
+      "tab.activeModifiedBorder": "#F8FF2E",
+      "tab.activeForeground": "#22E9FF",
+      "tab.inactiveBackground": "#001f23",
+      "breadcrumb.background": "#101e25",
+      "editorGroupHeader.tabsBackground": "#001f23",
+      "sideBarSectionHeader.background": "#001f23",
+      "list.activeSelectionBackground": "#162933",
+      "list.inactiveSelectionBackground": "#101e25"
+    }
+  }
+}
