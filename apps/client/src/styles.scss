@@ -4,7 +4,7 @@
 @import '~@angular/cdk/text-field/text-field';
 @include cdk-a11y();
 
-$client-primary: mat-palette($mat-indigo);
+$client-primary: mat-palette($mat-blue);
 $client-accent: mat-palette($mat-pink, A200, A100, A400);
 
 $client-warn: mat-palette($mat-red);
