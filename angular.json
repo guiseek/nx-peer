@@ -58,5 +58,14 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "server"
+  "defaultProject": "server",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  }
 }
