@@ -1,13 +1,12 @@
 import { Model } from 'mongoose'
 import { createHmac } from 'crypto'
-import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { ChangePasswordDto } from './dto/change-password.dto'
 import { User, UserDocument } from './schemas/user.schema'
 import { FindOneParams } from './dto/find-one-params.dto'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
-import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util'
 
 @Injectable()
 export class UsersService {
@@ -23,7 +22,7 @@ export class UsersService {
   }
 
   findById(id: string) {
-    return this.userModel.findOne({ id }).select('-password')
+    return this.userModel.findById(id).select('-password').exec()
   }
 
   findOne(props: FindOneParams) {
@@ -41,9 +40,10 @@ export class UsersService {
   async changePassword(id: string, change: ChangePasswordDto) {
     const user = await this.userModel.findById(id).select('password')
     const pass = this.encrypt(change.password)
-    return !(user.password === pass)
-      ? HttpErrorByCode[403]
-      : this.updatePassword(id, change.newPassword)
+    if (!(user.password === pass)) {
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
+    }
+    return this.updatePassword(id, change.newPassword)
   }
 
   private updatePassword(id: string, newPassword: string) {

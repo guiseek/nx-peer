@@ -33,13 +33,10 @@ export class UsersController {
     return this.usersService.findAll()
   }
 
-  @Get('find-one')
-  findOne(@Query() query: FindOneParams) {
-    return this.usersService.findOne(query)
-  }
-
   @Get(':id')
   findById(@Param('id') id: string) {
+    console.log(id);
+
     return this.usersService.findById(id)
   }
 
@@ -49,17 +46,22 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto)
   }
 
-  @Put(':id')
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.usersService.remove(id)
+  }
+
+  @Get('find-one')
+  findOne(@Query() query: FindOneParams) {
+    return this.usersService.findOne(query)
+  }
+
+  @Put(':id/change-password')
   @UsePipes(new ValidationPipe({ transform: true }))
   changePassword(
     @Param('id') id: string,
     @Body() changePasswordDto: ChangePasswordDto
   ) {
     return this.usersService.changePassword(id, changePasswordDto)
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id)
   }
 }

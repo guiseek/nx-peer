@@ -1,0 +1,28 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  fieldset {
+    border-color: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 4px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    .mat-card {
+      gap: 5px;
+      display: flex;
+      flex-direction: column;
+      & > .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+  .mat-button-base {
+    margin: 4px;
+    float: right;
+  }
+}
