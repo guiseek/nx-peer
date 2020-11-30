@@ -1,0 +1,54 @@
+<form id="usersForm" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <button type="button" mat-raised-button color="primary" (click)="getUuid(inputEl)">
+    Quero me cadastrar
+  </button>
+  <fieldset [disabled]="uuid.invalid">
+    <mat-card>
+      <mat-form-field>
+        <mat-label for="uuid">UUID</mat-label>
+        <input matInput type="text" readonly id="uuid" formControlName="uuid" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="nickname">nickname</mat-label>
+        <input matInput type="text" #inputEl cdkFocusInitial id="nickname" formControlName="nickname" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="password">password</mat-label>
+        <input matInput type="password" #inputEl cdkFocusInitial id="password" formControlName="password" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="email">E-mail</mat-label>
+        <input matInput type="text" id="email" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="phone">Phone</mat-label>
+        <input matInput type="text" id="phone" formControlName="phone" />
+      </mat-form-field>
+      <input type="file" id="photo" formControlName="photo" />
+    </mat-card>
+    <button mat-raised-button type="submit" [disabled]="form.invalid">
+      Enviar
+    </button>
+  </fieldset>
+</form>
+
+<table>
+  <tr>
+    <th>uuid</th>
+    <th>nickname</th>
+    <th>email</th>
+    <th>phone</th>
+    <th>createdAt</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let u of users$ | async">
+    <td>{{ u.uuid }}</td>
+    <td>{{ u.nickname }}</td>
+    <td>{{ u.email }}</td>
+    <td>{{ u.phone }}</td>
+    <td>{{ u.createdAt | date }}</td>
+    <td>
+      <button mat-button type="button" (click)="fineOne(u._id)">GET</button>
+    </td>
+  </tr>
+</table>

@@ -25,6 +25,13 @@
   "projects": {
     "server": {
       "tags": ["side:server"]
+    },
+    "client": {
+      "tags": []
+    },
+    "client-e2e": {
+      "tags": [],
+      "implicitDependencies": ["client"]
     }
   },
   "workspaceLayout": {
