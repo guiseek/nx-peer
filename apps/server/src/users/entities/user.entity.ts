@@ -1,4 +1,4 @@
-export class User {
+export interface UserEntity {
   uuid: string
   password: string
   nickname: string

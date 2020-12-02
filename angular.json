@@ -76,7 +76,8 @@
             "aot": true,
             "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
             "styles": ["apps/client/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["socket.io-client", "rtcpeerconnection-shim"]
           },
           "configurations": {
             "production": {
@@ -170,6 +171,48 @@
             "tsConfig": ["apps/client-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/client-e2e/**/*"]
           }
+        }
+      }
+    },
+    "nx-peer-connection": {
+      "projectType": "library",
+      "root": "packs/nx-peer/connection",
+      "sourceRoot": "packs/nx-peer/connection/src",
+      "prefix": "nx-peer",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "packs/nx-peer/connection/tsconfig.lib.json",
+            "project": "packs/nx-peer/connection/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packs/nx-peer/connection/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packs/nx-peer/connection/tsconfig.lib.json",
+              "packs/nx-peer/connection/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!packs/nx-peer/connection/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packs/nx-peer/connection/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }

@@ -10,13 +10,20 @@ export type UserDocument = User & Document
     updatedAt: true,
     createdAt: true,
   },
-
 })
 export class User {
-  @Prop({ type: String, required: true })
+  @Prop({
+    unique: true,
+    type: String,
+    required: true,
+  })
   uuid: string
 
-  @Prop({ type: String, required: true })
+  @Prop({
+    type: String,
+    minlength: 6,
+    required: true,
+  })
   password: string
 
   @Prop({ type: String, required: true })

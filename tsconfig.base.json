@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-peer/connection": ["packs/nx-peer/connection/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
